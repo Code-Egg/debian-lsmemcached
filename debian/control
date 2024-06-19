@@ -1,0 +1,28 @@
+#Source: lsmcd
+#Maintainer: QQ <coldegg449@gmail.com>
+#Standards-Version: 4.7.0
+#Priority: optional
+#Section: utils
+#
+#Package: lsmcd
+#Architecture: amd64
+#Description: hello world for Debian packaging
+# This is an hello program to demonstrate
+# Debian packaging.
+#
+#Package: lsmcd
+#Architecture: all
+#Description: hellodeb documentation
+
+Source: memcached
+Maintainer: QQ <coldegg449@gmail.com>
+Build-Depends: debhelper (>= 13),
+               wget, ca-certificates, libevent-dev, 
+               git, build-essential, zlib1g-dev,
+               libexpat1-dev, openssl, libssl-dev,
+               libsasl2-dev, libpcre3-dev, sasl2-bin
+
+Package: memcached
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
+Description: high-performance memory object caching system
