@@ -19,7 +19,7 @@ tar Jcvf lsmcd_1.0.orig.tar.xz lsmcd-${LSMCD_VERSION}
 
 mkdir ${DEBPATH}
 cp -r lsmcd-${LSMCD_VERSION}/* ${DEBPATH}
-
+cp lsmcd.1 ${DEBPATH}
 cp -r debian ${DEBPATH}
 
 cd ${DEBPATH}
