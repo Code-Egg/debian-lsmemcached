@@ -9,31 +9,31 @@ DEB_VERSION = $(shell dpkg-parsechangelog --show-field Version)
 LSMCD_VERSION='1.4.38'
 
 clean:
-        rm -f lsmcd
-        rm -rf debian/tmp
+	rm -f lsmcd
+	rm -f debian/tmp
 
 build: build-arch
 
 binary: binary-arch
 
 build-arch:
-        ./fixtimestamp.sh
-        ./configure CFLAGS=" -O3" CXXFLAGS=" -O3"
-        pwd; echo 'make>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
-        make
+	./fixtimestamp.sh
+	./configure CFLAGS=" -O3" CXXFLAGS=" -O3"
+ 	pwd; echo 'make>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+	make
 
 binary-arch:
-        rm -rf debian/tmp
-        mkdir -p debian/tmp/DEBIAN
-        dpkg-gencontrol -plsmcd
-        mkdir -p debian/tmp/usr/bin
-        cp src/lsmcd debian/tmp/usr/bin
-        strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/bin/lsmcd
-        dpkg-deb --build debian/tmp ../lsmcd_$(DEB_VERSION)_$(DEB_TARGET_ARCH).deb
+	rm -rf debian/tmp
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plsmcd
+	mkdir -p debian/tmp/usr/bin
+	cp src/lsmcd debian/tmp/usr/bin
+	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/bin/lsmcd
+	dpkg-deb --build debian/tmp ../lsmcd_$(DEB_VERSION)_$(DEB_TARGET_ARCH).deb
 
 binary-indep:
-        rm -rf debian/tmp
-        mkdir -p debian/tmp/DEBIAN
-        dpkg-gencontrol -plsmcd-doc
-        mkdir -p debian/tmp/usr/share/man/man1
-        dpkg-deb --build debian/tmp ../lsmcd-doc_$(DEB_VERSION)_all.deb
+	rm -rf debian/tmp
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plsmcd-doc
+	mkdir -p debian/tmp/usr/share/man/man1
+	dpkg-deb --build debian/tmp ../lsmcd-doc_$(DEB_VERSION)_all.deb
