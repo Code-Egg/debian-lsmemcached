@@ -17,8 +17,8 @@ binary: binary-arch binary-indep
 	
 build-arch:
 	cd lsmcd-*
-    ./fixtimestamp.sh
-    ./configure CFLAGS=" -O3" CXXFLAGS=" -O3"
+	./fixtimestamp.sh
+	./configure CFLAGS=" -O3" CXXFLAGS=" -O3"
 	make
 binary-arch:
 	rm -rf debian/tmp
