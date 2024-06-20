@@ -22,6 +22,7 @@ build-arch:
 	./fixtimestamp.sh
 	./configure CFLAGS=" -O3" CXXFLAGS=" -O3"
 	make
+
 binary-arch:
 	rm -rf debian/tmp
 	mkdir -p debian/tmp/DEBIAN
@@ -31,10 +32,11 @@ binary-arch:
 	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/bin/lsmcd
 	dpkg-deb --build debian/tmp ../lsmcd_$(DEB_VERSION)_$(DEB_TARGET_ARCH).deb
 
-
 binary-indep:
 	rm -rf debian/tmp
 	mkdir -p debian/tmp/DEBIAN
+	echo '<<<<<<dpkg-gencontrol>>>>>>'
 	dpkg-gencontrol -plsmcd-doc
 	mkdir -p debian/tmp/usr/share/man/man1
+	echo '<<<<<<dpkg-deb --build debian/tmp>>>>>>'
 	dpkg-deb --build debian/tmp ../lsmcd-doc_$(DEB_VERSION)_all.deb
