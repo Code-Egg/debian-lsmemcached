@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 13),
                libsasl2-dev, libpcre3-dev, sasl2-bin
 
 Package: lsmcd
-Architecture: any
+Architecture: amd64
 Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
 Description: high-performance memory object caching system
 
