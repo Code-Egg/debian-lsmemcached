@@ -19,7 +19,6 @@ binary: binary-arch
 build-arch:
 	./fixtimestamp.sh
 	./configure CFLAGS=" -O3" CXXFLAGS=" -O3"
- 	pwd; echo 'make>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
 	make
 
 binary-arch:
