@@ -7,6 +7,7 @@ CPPFLAGS := `dpkg-buildflags --get CPPFLAGS`
 
 DEB_VERSION = $(shell dpkg-parsechangelog --show-field Version)
 LSMCD_VERSION='1.4.38'
+
 clean:
         rm -f lsmcd
         rm -rf debian/tmp
