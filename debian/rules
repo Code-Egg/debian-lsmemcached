@@ -6,8 +6,9 @@ LDFLAGS := `dpkg-buildflags --get LDFLAGS`
 CPPFLAGS := `dpkg-buildflags --get CPPFLAGS`
 
 DEB_VERSION = $(shell dpkg-parsechangelog --show-field Version)
-
+LSMCD_VERSION='1.4.38'
 clean:
+	rm v${LSMCD_VERSION}.tar.gz
 	rm -f lsmcd
 	rm -rf debian/tmp
 
@@ -16,6 +17,8 @@ build: build-arch build-indep
 binary: binary-arch binary-indep 
 	
 build-arch:
+	wget https://github.com/litespeedtech/lsmcd/archive/refs/tags/v${LSMCD_VERSION}.tar.gz
+	tar -zxf v${LSMCD_VERSION}.tar.gz
 	cd lsmcd-*
 	./fixtimestamp.sh
 	./configure CFLAGS=" -O3" CXXFLAGS=" -O3"
