@@ -13,7 +13,6 @@ DEBPATH=build
 
 ./clean.sh
 
-#tar Jcvf hellodeb_${VERSION}.orig.tar.xz hellodeb.c
 wget https://github.com/litespeedtech/lsmcd/archive/refs/tags/v${LSMCD_VERSION}.tar.gz
 tar -zxf v${LSMCD_VERSION}.tar.gz
 tar Jcvf lsmcd_1.0.orig.tar.xz lsmcd-${LSMCD_VERSION}
