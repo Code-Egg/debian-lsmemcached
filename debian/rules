@@ -13,9 +13,9 @@ clean:
 	rm -f lsmcd.1.gz
 	rm -f debian/tmp
 
-build: build-arch build-indep
+build: build-arch
 
-binary: binary-arch binary-indep
+binary: binary-arch
 
 build-arch:
 	./fixtimestamp.sh

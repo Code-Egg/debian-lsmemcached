@@ -1,7 +1,7 @@
 Source: lsmcd
 Maintainer: QQ <coldegg449@gmail.com>
 Priority: optional
-Standards-Version: 4.7.0
+Standards-Version: 4.6.0
 Build-Depends: debhelper (>= 13),
                wget, ca-certificates, libevent-dev, 
                git, build-essential, zlib1g-dev,
@@ -12,7 +12,3 @@ Package: lsmcd
 Architecture: amd64
 Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
 Description: high-performance memory object caching system
-
-Package: lsmcd-doc
-Architecture: all
-Description: lsmcd documentation
