@@ -1,4 +1,10 @@
-lsmcd (1.0-2) jammy; urgency=low
+lsmcd (1.0-3) jammy; urgency=low
+
+  * Initial release.
+
+ -- LS Egg <coldegg449@gmail.com>  Thu, 20 Jun 2024 12:22:28 +0000
+
+lsmcd (1.0-1) jammy; urgency=low
 
   * Initial release.
 
