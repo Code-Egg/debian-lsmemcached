@@ -1,22 +1,38 @@
 #!/usr/bin/make -f
 
-DISTRIBUTION = $(shell sed -n "s/^VERSION_CODENAME=//p" /etc/os-release)
-VERSION = 1.4.38
-PACKAGEVERSION = $(VERSION)-0~$(DISTRIBUTION)0
-TARBALL = v$(VERSION).tar.gz
-URL = https://github.com/litespeedtech/lsmcd/archive/refs/tags/$(TARBALL)
+CC = $(DEB_HOST_GNU_TYPE)-gcc
+CFLAGS := `dpkg-buildflags --get CFLAGS` -Wall
+LDFLAGS := `dpkg-buildflags --get LDFLAGS`
+CPPFLAGS := `dpkg-buildflags --get CPPFLAGS`
 
-%:
-	dh $@
+DEB_VERSION = $(shell dpkg-parsechangelog --show-field Version)
 
-override_dh_update_autotools_config:
-	wget -N --progress=dot:mega $(URL)
-	tar --strip-components=1 -xf $(TARBALL)
+clean:
+	rm -f lsmcd
+	rm -rf debian/tmp
 
-override_dh_auto_test:
-	# Don't run the whitespace test
-	rm t/whitespace.t
-	dh_auto_test
+build: build-arch build-indep
 
-override_dh_gencontrol:
-	dh_gencontrol -- -v$(PACKAGEVERSION)
+binary: binary-arch binary-indep 
+	
+build-arch:
+	cd lsmcd-*
+    ./fixtimestamp.sh
+    ./configure CFLAGS=" -O3" CXXFLAGS=" -O3"
+	make
+binary-arch:
+	rm -rf debian/tmp
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plsmcd
+	mkdir -p debian/tmp/usr/bin
+	cp lsmcd debian/tmp/usr/bin
+	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/bin/lsmcd
+	dpkg-deb --build debian/tmp ../lsmcd_$(DEB_VERSION)_$(DEB_TARGET_ARCH).deb
+
+
+binary-indep:
+	rm -rf debian/tmp
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plsmcd-doc
+	mkdir -p debian/tmp/usr/share/man/man1
+	dpkg-deb --build debian/tmp ../lsmcd-doc_$(DEB_VERSION)_all.deb

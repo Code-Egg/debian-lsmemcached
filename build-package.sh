@@ -1,5 +1,5 @@
 #!/bin/bash
-
+LSMCD_VERSION='1.4.38'
 if [[ $# -lt 1 ]]; then
   echo "./build-package.sh source|any|all|binary|full [args]"
   exit 1
@@ -14,12 +14,12 @@ DEBPATH=build
 ./clean.sh
 
 #tar Jcvf hellodeb_${VERSION}.orig.tar.xz hellodeb.c
-wget https://github.com/litespeedtech/lsmcd/archive/refs/tags/v1.4.38.tar.gz
-tar -zxf v1.4.38.tar.gz
-mv v1.4.38.tar.gz lsmcd_${VERSION}.orig.tar.xz
+wget https://github.com/litespeedtech/lsmcd/archive/refs/tags/v${LSMCD_VERSION}.tar.gz
+tar -zxf v${LSMCD_VERSION}.tar.gz
+tar Jcvf lsmcd_1.0.orig.tar.xz lsmcd-${LSMCD_VERSION}
 
 mkdir ${DEBPATH}
-cp -r lsmcd-1.4.38/* ${DEBPATH}
+cp -r lsmcd-${LSMCD_VERSION}/* ${DEBPATH}
 
 cp -r debian ${DEBPATH}
 
