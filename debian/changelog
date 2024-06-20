@@ -1,4 +1,4 @@
-lsmcd (1.1-0) jammy; urgency=low
+lsmcd (1.1-3) jammy; urgency=low
 
   * Initial release.
 
@@ -15,4 +15,3 @@ lsmcd (1.0-1) jammy; urgency=low
   * Initial release.
 
  -- LS Egg <coldegg449@gmail.com>  Thu, 20 Jun 2024 12:21:28 +0000
- 

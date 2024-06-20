@@ -2,11 +2,8 @@ Source: lsmcd
 Maintainer: QQ <coldegg449@gmail.com>
 Priority: optional
 Standards-Version: 4.6.0
-Build-Depends: debhelper (>= 13),
-               wget, ca-certificates, libevent-dev, 
-               git, build-essential, zlib1g-dev,
-               libexpat1-dev, openssl, libssl-dev,
-               libsasl2-dev, libpcre3-dev, sasl2-bin
+Build-Depends: wget, ca-certificates, libevent-dev, git, zlib1g-dev, libexpat1-dev, openssl, libssl-dev, libsasl2-dev, libpcre3-dev, sasl2-bin
+Section: utils
 
 Package: lsmcd
 Architecture: amd64
