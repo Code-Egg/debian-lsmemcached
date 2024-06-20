@@ -15,7 +15,7 @@ DEBPATH=build
 
 wget https://github.com/litespeedtech/lsmcd/archive/refs/tags/v${LSMCD_VERSION}.tar.gz
 tar -zxf v${LSMCD_VERSION}.tar.gz
-tar Jcvf lsmcd_1.0.orig.tar.xz lsmcd-${LSMCD_VERSION}
+tar Jcvf lsmcd_${VERSION}.orig.tar.xz lsmcd-${LSMCD_VERSION}
 
 mkdir ${DEBPATH}
 cp -r lsmcd-${LSMCD_VERSION}/* ${DEBPATH}
