@@ -29,8 +29,7 @@ binary-arch:
 	mkdir -p debian/tmp/usr/bin
 	cp src/lsmcd debian/tmp/usr/local/bin
 	mkdir -p debian/tmp/usr/local/lsmcd/bin
-	cp -r dist/bin debian/tmp/usr/local/lsmcd/
-	cp -r dist/conf debian/tmp/usr/local/lsmcd/
+	cp ../lsmcdctrl debian/tmp/DEBIAN/
 	cp ../lsmcd.service debian/tmp/DEBIAN/
 	chmod 775 debian/postinst
 	cp -a debian/postinst debian/tmp/DEBIAN
