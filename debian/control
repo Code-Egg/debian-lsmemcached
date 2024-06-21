@@ -7,5 +7,4 @@ Section: utils
 
 Package: lsmcd
 Architecture: amd64
-Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
 Description: high-performance memory object caching system
