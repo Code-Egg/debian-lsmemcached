@@ -28,9 +28,9 @@ binary-arch:
 	dpkg-gencontrol -plsmcd
 	mkdir -p debian/tmp/usr/bin
 	cp src/lsmcd debian/tmp/usr/bin
-	cp lsmcd.service debian/tmp/DEBIAN/
-	chmod 775 debian/postinst
-	cp -a debian/postinst debian/tmp/DEBIAN/	
+	cp ../lsmcd.service debian/tmp/DEBIAN/
+	chmod 775 postinst
+	cp -a postinst debian/tmp/DEBIAN/
 	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/bin/lsmcd
 	dpkg-deb --build debian/tmp ../lsmcd_$(DEB_VERSION)_$(DEB_TARGET_ARCH).deb
 
