@@ -1,0 +1,4 @@
+#!/bin/bash
+if [ -z /lib/systemd/system/lsmcd.service ]; then
+    cp lsmcd.service /lib/systemd/system/lsmcd.service
+fi
