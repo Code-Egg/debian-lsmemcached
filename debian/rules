@@ -32,7 +32,7 @@ binary-arch:
 	cp src/lsmcd debian/tmp/usr/local/lsmcd/bin
 	cp dist/bin/lsmcdctrl debian/tmp/usr/local/lsmcd/bin
 	cp dist/conf/* debian/tmp/usr/local/lsmcd/conf
-	cp ../lsmcd.service debian/tmp/DEBIAN/
+	cp lsmcd.service debian/tmp/DEBIAN/
 	chmod 775 debian/postinst
 	cp -a debian/postinst debian/tmp/DEBIAN
 	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/local/lsmcd/bin/lsmcd
