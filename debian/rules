@@ -32,7 +32,7 @@ binary-arch:
 	chmod 775 debian/postinst
 	cp -a debian/postinst debian/tmp/DEBIAN
 	cp debian/lsmcd.service debian/tmp/DEBIAN/
-	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/local/lsmcd/bin/lsmcd
+	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/bin/lsmcd
 	echo 'debug'; ls -l; ls -l debian
 	dpkg-deb -v --build debian/tmp ../lsmcd_$(DEB_VERSION)_$(DEB_TARGET_ARCH).deb
 
