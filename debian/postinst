@@ -2,3 +2,7 @@
 if [ -z /lib/systemd/system/lsmcd.service ]; then
     cp lsmcd.service /lib/systemd/system/lsmcd.service
 fi
+
+mkdir -p /usr/local/lsmcd/bin
+
+cp 
