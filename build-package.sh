@@ -22,5 +22,5 @@ cp -r lsmcd-${LSMCD_VERSION}/* ${DEBPATH}
 cp -r debian ${DEBPATH}
 
 cd ${DEBPATH}
-dpkg-buildpackage --build=$BUILD "$@"
+dpkg-buildpackage -sa --build=$BUILD "$@"
 cd ..
