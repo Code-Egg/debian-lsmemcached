@@ -32,8 +32,9 @@ binary-arch:
 	cp src/lsmcd debian/tmp/usr/local/lsmcd/bin
 	cp dist/bin/lsmcdctrl debian/tmp/usr/local/lsmcd/bin
 	cp dist/conf/* debian/tmp/usr/local/lsmcd/conf
-	cp lsmcd.service debian/tmp/DEBIAN/
+	echo 'debug'; pwd; ls -al
 	chmod 775 debian/postinst
+	cp lsmcd.service debian/tmp/DEBIAN/
 	cp -a debian/postinst debian/tmp/DEBIAN
 	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/local/lsmcd/bin/lsmcd
 	dpkg-deb --build debian/tmp ../lsmcd_$(DEB_VERSION)_$(DEB_TARGET_ARCH).deb
