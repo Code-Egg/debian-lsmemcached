@@ -27,17 +27,31 @@ binary-arch:
 	mkdir -p debian/tmp/DEBIAN
 	dpkg-gencontrol -plsmcd
 	mkdir -p debian/tmp/usr/bin
-	mkdir -p debian/tmp/usr/local/lsmcd/bin
-	mkdir -p debian/tmp/usr/local/lsmcd/conf
-	cp src/lsmcd debian/tmp/usr/local/lsmcd/bin
-	cp dist/bin/lsmcdctrl debian/tmp/usr/local/lsmcd/bin
-	cp dist/conf/* debian/tmp/usr/local/lsmcd/conf
+	cp src/lsmcd debian/tmp/usr/bin
+	cp dist/bin/lsmcdctrl debian/tmp/DEBIAN
 	chmod 775 debian/postinst
 	cp -a debian/postinst debian/tmp/DEBIAN
 	cp debian/lsmcd.service debian/tmp/DEBIAN/
 	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/local/lsmcd/bin/lsmcd
 	echo 'debug'; ls -l; ls -l debian
 	dpkg-deb -v --build debian/tmp ../lsmcd_$(DEB_VERSION)_$(DEB_TARGET_ARCH).deb
+
+#binary-arch:
+#	rm -rf debian/tmp
+#	mkdir -p debian/tmp/DEBIAN
+#	dpkg-gencontrol -plsmcd
+#	mkdir -p debian/tmp/usr/bin
+#	mkdir -p debian/tmp/usr/local/lsmcd/bin
+#	mkdir -p debian/tmp/usr/local/lsmcd/conf
+#	cp src/lsmcd debian/tmp/usr/local/lsmcd/bin
+#	cp dist/bin/lsmcdctrl debian/tmp/usr/local/lsmcd/bin
+#	cp dist/conf/* debian/tmp/usr/local/lsmcd/conf
+#	chmod 775 debian/postinst
+#	cp -a debian/postinst debian/tmp/DEBIAN
+#	cp debian/lsmcd.service debian/tmp/DEBIAN/
+#	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/local/lsmcd/bin/lsmcd
+#	echo 'debug'; ls -l; ls -l debian
+#	dpkg-deb -v --build debian/tmp ../lsmcd_$(DEB_VERSION)_$(DEB_TARGET_ARCH).deb
 
 
 build-indep:
