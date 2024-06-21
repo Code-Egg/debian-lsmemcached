@@ -1,0 +1,22 @@
+[Unit]
+Description=LiteSpeed Mmemcached daemon
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/lsmcd.pid
+ExecStart=/usr/local/lsmcd/bin/lsmcdctrl start
+ExecReload=/usr/local/lsmcd/bin/lsmcdctrl reload
+ExecStop=/usr/local/lsmcd/bin/lsmcdctrl restart
+
+#Restart=on-failure
+#RestartSec=5
+
+# do not want to be limited in anyway
+CPUAccounting=false
+TasksAccounting=false
+MemoryAccounting=false
+OOMScoreAdjust=-500
+
+[Install]
+WantedBy=multi-user.target
