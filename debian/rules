@@ -24,7 +24,7 @@ build-arch:
 
 binary-arch:
 	rm -rf debian/tmp
-	mkdir -p debian/ 
+	mkdir -p debian/tmp/DEBIAN
 	dpkg-gencontrol -plsmcd
 	mkdir -p debian/tmp/usr/bin
 	cp src/lsmcd debian/tmp/usr/bin
