@@ -24,14 +24,15 @@ build-arch:
 
 binary-arch:
 	rm -rf debian/tmp
-	mkdir -p debian/tmp/DEBIAN
+	mkdir -p debian/ 
 	dpkg-gencontrol -plsmcd
 	mkdir -p debian/tmp/usr/bin
 	cp src/lsmcd debian/tmp/usr/bin
-	cp dist/bin/lsmcdctrl debian/tmp/DEBIAN
+	mkdir -p debian/tmp/usr/share/lsmcd
+	cp dist/bin/lsmcdctrl /usr/share/lsmcd
 	chmod 775 debian/postinst
 	cp -a debian/postinst debian/tmp/DEBIAN
-	cp debian/lsmcd.service debian/tmp/DEBIAN/
+	cp debian/lsmcd.service /usr/share/lsmcd
 	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/bin/lsmcd
 	echo 'debug'; ls -l; ls -l debian
 	dpkg-deb -v --build debian/tmp ../lsmcd_$(DEB_VERSION)_$(DEB_TARGET_ARCH).deb

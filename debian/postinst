@@ -1,15 +1,15 @@
 #!/bin/bash
 set -x
 if [ -z /lib/systemd/system/lsmcd.service ]; then
-    cp tmp/DEBIAN/lsmcd.service /lib/systemd/system/
+    cp /usr/share/lsmcd/lsmcd.service /lib/systemd/system/
 fi
 
 if [ ! -d /usr/local/lsmcd/bin ]; then
     mkdir -p /usr/local/lsmcd/bin
 fi
 if [ -z /usr/local/lsmcd/bin/lsmcdctrl ]; then
-    cp tmp/DEBIAN/lsmcdctrl /usr/local/lsmcd/bin/
+    cp /usr/share/lsmcd/lsmcdctrl /usr/local/lsmcd/bin/
 fi
 if [ -z /usr/local/lsmcd/bin/lsmcd ]; then
-    cp tmp/DEBIAN/usr/bin/lsmcd /usr/local/lsmcd/bin/
+    cp /usr/bin/lsmcd /usr/local/lsmcd/bin/
 fi
