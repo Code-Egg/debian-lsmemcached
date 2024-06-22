@@ -5,4 +5,5 @@ cp /usr/share/lsmcd/lsmcd.service /lib/systemd/system/
 
 mkdir -p /usr/local/lsmcd/bin
 cp /usr/share/lsmcd/lsmcdctrl /usr/local/lsmcd/bin/
+cp -r /usr/share/lsmcd/conf /usr/local/lsmcd/
 cp /usr/bin/lsmcd /usr/local/lsmcd/bin/
