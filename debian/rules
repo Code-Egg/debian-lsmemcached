@@ -29,13 +29,14 @@ binary-arch:
 	mkdir -p debian/tmp/usr/bin
 	cp src/lsmcd debian/tmp/usr/bin
 	mkdir -p debian/tmp/usr/share/lsmcd
-	cp dist/bin/lsmcdctrl /usr/share/lsmcd
+	cp dist/bin/lsmcdctrl debian/tmp/usr/share/lsmcd
 	chmod 775 debian/postinst
 	cp -a debian/postinst debian/tmp/DEBIAN
-	cp debian/lsmcd.service /usr/share/lsmcd
+	cp debian/lsmcd.service debian/tmp/usr/share/lsmcd
 	strip --strip-unneeded --remove-section=.comment --remove-section=.note debian/tmp/usr/bin/lsmcd
 	echo 'debug'; ls -l; ls -l debian
 	dpkg-deb -v --build debian/tmp ../lsmcd_$(DEB_VERSION)_$(DEB_TARGET_ARCH).deb
+
 
 #binary-arch:
 #	rm -rf debian/tmp
