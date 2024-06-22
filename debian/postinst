@@ -1,15 +1,8 @@
 #!/bin/bash
 set -x
-if [ -z /lib/systemd/system/lsmcd.service ]; then
-    cp /usr/share/lsmcd/lsmcd.service /lib/systemd/system/
-fi
+ls /usr/share/lsmcd/
+cp /usr/share/lsmcd/lsmcd.service /lib/systemd/system/
 
-if [ ! -d /usr/local/lsmcd/bin ]; then
-    mkdir -p /usr/local/lsmcd/bin
-fi
-if [ -z /usr/local/lsmcd/bin/lsmcdctrl ]; then
-    cp /usr/share/lsmcd/lsmcdctrl /usr/local/lsmcd/bin/
-fi
-if [ -z /usr/local/lsmcd/bin/lsmcd ]; then
-    cp /usr/bin/lsmcd /usr/local/lsmcd/bin/
-fi
+mkdir -p /usr/local/lsmcd/bin
+cp /usr/share/lsmcd/lsmcdctrl /usr/local/lsmcd/bin/
+cp /usr/bin/lsmcd /usr/local/lsmcd/bin/
