@@ -1,5 +1,5 @@
 #!/bin/bash
-LSMCD_VERSION='1.4.38'
+LSMCD_VERSION="$(curl -s https://github.com/litespeedtech/lsmcd/tags | grep '/litespeedtech/lsmcd/archive/refs/tags/' | grep zip | head -n1| grep -Eo '[0-9]+(\.[0-9]+)+')"
 if [[ $# -lt 1 ]]; then
   echo "./build-package.sh source|any|all|binary|full [args]"
   exit 1
